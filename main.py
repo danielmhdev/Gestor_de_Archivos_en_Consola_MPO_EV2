@@ -5,14 +5,17 @@ crear_directorio,
 crear_archivo,
 escribir_en_archivo,
 eliminar_elemento,
-mostrar_informacion
+mostrar_informacion,
+cambiar_directorio_padre,
+entrar_directorio,
+renombrar_elemento
 )
 
 def main():
     print("Bienvenido al Gestor de Archivos")
     opcion = -1
 
-    while opcion != 7:
+    while opcion != 10:
         mostrar_menu()
         try:
             opcion = int(input("\nSelecciona una opción: "))
@@ -53,9 +56,21 @@ def main():
                 info = mostrar_informacion(nombre)
                 print(info)
             case 7:
+                mensaje = cambiar_directorio_padre()
+                print(mensaje)
+            case 8:
+                nombre = input("¿A qué carpeta quieres entrar?: ").strip()
+                mensaje = entrar_directorio(nombre)
+                print(mensaje)
+            case 9:
+                nombre_antiguo = input("Nombre actual del archivo/carpeta: ").strip()
+                nombre_nuevo = input("Nuevo nombre: ").strip()
+                mensaje = renombrar_elemento(nombre_antiguo, nombre_nuevo)
+                print(mensaje)
+            case 10:
                 print("\nSaliendo del gestor...")
             case _:
-                print("Error: Introduce un número del 1 al 7")
+                print("Error: Introduce un número del 1 al 10")
 
 
 if __name__ == "__main__":
